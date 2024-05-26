@@ -1,14 +1,12 @@
 
 main()
 function main()
-    mainContainer = uifigure;
-    gridLayout = uigridlayout(mainContainer, [1, 1]);
+    mainPanel = uifigure;
+    gridLayout = uigridlayout(mainPanel, [1, 1]);
     tabContainer = uitabgroup(gridLayout);
     firstTab = uitab(tabContainer,"Title","Inciso A");
     secondTab = uitab(tabContainer,"Title","Inciso B"); 
        
-
-
     A = 1;
     w = 1;
     theta = pi/4; 
