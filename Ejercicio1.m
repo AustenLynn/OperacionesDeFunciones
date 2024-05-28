@@ -6,11 +6,11 @@ function main()
     tabContainer = uitabgroup(mainGridLayout);
     firstTab = uitab(tabContainer,"Title","Inciso A");
     firstTabGridLayout = uigridlayout(firstTab, [1,1]);
-    yfunctionAxes = uiaxes(firstTabGridLayout);
-    yfunction = @(t) 2 - 2 * (t.^2); 
-    fplot(yfunctionAxes, yfunction, [-5, 5]);
-    ylim(yfunctionAxes, [-20, 5]); 
-    grid(yfunctionAxes, 'on');
+    xfunctionAxes = uiaxes(firstTabGridLayout);
+    xfunction = @(t) 2 - 2 * (t.^2); 
+    fplot(xfunctionAxes, xfunction, [-5, 5]);
+    ylim(xfunctionAxes, [-20, 5]); 
+    grid(xfunctionAxes, 'on');
 
     secondTab = uitab(tabContainer,"Title","Inciso B");
     secondTabGridLayout = uigridlayout(secondTab, [2, 2]);
