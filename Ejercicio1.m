@@ -19,12 +19,13 @@ function main()
     amplitudeLabel = uilabel(firstSpinnersGrid,"Text","Amplitud");
     amplitudeSpinner = uispinner(firstSpinnersGrid,"Limits",[0 10], "Value", 1);
     frecuencyLabel = uilabel(firstSpinnersGrid,"Text","Frecuencia");
-    frecuencySpinner = uispinner(firstSpinnersGrid,"Limits",[0 10], "Value", 1);
+    frecuencySpinner = uispinner(firstSpinnersGrid,"Limits",[0 10], "Value", pi);
     phaseLabel = uilabel(firstSpinnersGrid,"Text","Fase");
-    phaseSpinner = uispinner(firstSpinnersGrid,"Limits",[0 2*pi], "Value", 1);
-    zFunctionAxes = uiaxes(secondTabGridLayout); 
+    phaseSpinner = uispinner(firstSpinnersGrid,"Limits",[0 2*pi], "Value", pi);
+    zFunctionAxes = uiaxes(secondTabGridLayout);
+    title(zFunctionAxes, "A sin(wt + \theta)"); 
     A = 1;
-    w = 1;
+    w = pi;
     theta = pi;        
     zfunction = @(t) (A * sin(w * t + theta));
     fplot(zFunctionAxes, zfunction, [0, 10]);
@@ -34,12 +35,13 @@ function main()
     secondAmplitudeLabel = uilabel(secondSpinnersGrid,"Text","Amplitud");
     secondAmplitudeSpinner = uispinner(secondSpinnersGrid,"Limits",[0 10], "Value", 1);
     secondFrecuencyLabel = uilabel(secondSpinnersGrid,"Text","Frecuencia");
-    secondFrecuencySpinner = uispinner(secondSpinnersGrid,"Limits",[0 10], "Value", 1);
+    secondFrecuencySpinner = uispinner(secondSpinnersGrid,"Limits",[0 10], "Value", pi);
     secondPhaseLabel = uilabel(secondSpinnersGrid,"Text","Fase");
-    secondPhaseSpinner = uispinner(secondSpinnersGrid,"Limits",[0 2*pi], "Value", 1);
-    yFunctionAxes = uiaxes(secondTabGridLayout); 
+    secondPhaseSpinner = uispinner(secondSpinnersGrid,"Limits",[0 2*pi], "Value", pi);
+    yFunctionAxes = uiaxes(secondTabGridLayout);
+    title(yFunctionAxes, "B cos(2\pift + \theta)");
     B = 1;
-    f = 1;
+    f = pi;
     thetaa = pi;        
     yfunction = @(t) (B * cos((f * 2 * pi * t) + thetaa));
     fplot(yFunctionAxes, yfunction, [0, 10]);
@@ -49,9 +51,9 @@ function main()
     frecuencySpinner.ValueChangedFcn = @(src, event) updateFirstPlot(src, event, amplitudeSpinner, frecuencySpinner, phaseSpinner, zFunctionAxes);
     phaseSpinner.ValueChangedFcn = @(src, event) updateFirstPlot(src, event, amplitudeSpinner, frecuencySpinner, phaseSpinner, zFunctionAxes);
 
-    secondAmplitudeSpinner.ValueChangedFcn = @(src, event) updateSecondPlot(src, event, secondAmplitudeSpinner, secondFrecuencySpinner, phaseSpinner, yFunctionAxes);
-    secondFrecuencySpinner.ValueChangedFcn = @(src, event) updateSecondPlot(src, event, secondAmplitudeSpinner, secondFrecuencySpinner, phaseSpinner, yFunctionAxes);
-    secondPhaseSpinner.ValueChangedFcn = @(src, event) updateSecondPlot(src, event, secondAmplitudeSpinner, secondFrecuencySpinner, phaseSpinner, yFunctionAxes);
+    secondAmplitudeSpinner.ValueChangedFcn = @(src, event) updateSecondPlot(src, event, secondAmplitudeSpinner, secondFrecuencySpinner, secondPhaseSpinner, yFunctionAxes);
+    secondFrecuencySpinner.ValueChangedFcn = @(src, event) updateSecondPlot(src, event, secondAmplitudeSpinner, secondFrecuencySpinner, secondPhaseSpinner, yFunctionAxes);
+    secondPhaseSpinner.ValueChangedFcn = @(src, event) updateSecondPlot(src, event, secondAmplitudeSpinner, secondFrecuencySpinner, secondPhaseSpinner, yFunctionAxes);
 end
 
 function updateFirstPlot(~, ~, amplitudeSpinner, frecuencySpinner, phaseSpinner, zFunctionAxes)
