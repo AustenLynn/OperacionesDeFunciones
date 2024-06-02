@@ -1,2 +1,2 @@
-# P1OperacionesDeFunciones
+# SistemasLinealesVerano2024
 Practica 1 sistemas lineales
